@@ -1,0 +1,45 @@
+﻿@page "{id:int}"
+@model PARCIAL.Namespace.EditCategoryModel
+@{
+}
+
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Edit Category</h1>
+    </div>
+</div>
+
+@if(Model.Category != null){
+<div >
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                <label for="id" class="form-label">Name</label>
+                <input type="text" class="form-control" id="id" name="Id" asp-for="Category.Id" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="CategoryName" asp-for="Category.CategoryName">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="CategoryDescription" asp-for="Category.CategoryDescription">
+            </div>
+            <div class="mb-3">
+                <label for="pictureURI" class="form-label">Picture URI</label>
+                <input type="text" class="form-control" id="pictureURI" name="PictureUrl" asp-for="Category.PictureUrl">
+            </div>
+
+            <div class="mb-3 d-flex justify-content-between">
+                <button class="btn btn-primary" type="submit" asp-page-handler="Edit">Submit</button>
+                <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+}else{
+<div class="container">
+    <p>Category Not Found!</p>
+</div>
+}

@@ -1,0 +1,80 @@
+﻿@page "{id:int}"
+@model PARCIAL.Namespace.EditProductModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Edit Product</h1>
+    </div>
+</div>
+
+@if(Model.Product != null){
+<div >
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                    <label for="ProductId" class="form-label">ProductId</label>
+                    <input type="text" class="form-control" id="ProductId" name="ProductId" asp-for="Product.ProductId" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="ProductName" class="form-label">ProductName</label>
+                <input type="text" class="form-control" id="name" name="ProductName" asp-for="Product.ProductName">
+            </div>
+            <div class="mb-3">
+                <label for="QuantityPerUnit" class="form-label">QuantityPerUnit</label>
+                <input type="text" class="form-control" id="description" name="QuantityPerUnit" asp-for="Product.QuantityPerUnit">
+            </div>
+            <div class="mb-3">
+                <label for="UnitPrice" class="form-label">UnitPrice</label>
+                <input type="text" class="form-control" id="pictureURI" name="UnitPrice" asp-for="Product.UnitPrice">
+            </div>
+
+            <div class="mb-3">
+                <label for="UnitInStock" class="form-label">UnitInStock</label>
+                <input type="text" class="form-control" id="pictureURI" name="UnitInStock" asp-for="Product.UnitInStock">
+            </div>
+            <div class="mb-3">
+                <label for="UnitsOnOrder" class="form-label">UnitsOnOrder</label>
+                <input type="text" class="form-control" id="pictureURI" name="UnitsOnOrder" asp-for="Product.UnitsOnOrder">
+            </div>
+            <div class="mb-3">
+                <label for="ReorderLevel" class="form-label">ReorderLevel</label>
+                <input type="text" class="form-control" id="pictureURI" name="ReorderLevel" asp-for="Product.ReorderLevel">
+            </div>
+            <div class="mb-3">
+                <label for="Discontinued" class="form-label">Discontinued</label>
+                <input type="text" class="form-control" id="pictureURI" name="Discontinued" asp-for="Product.Discontinued">
+            </div>
+
+
+            <div class="mb-3">
+                <label for="SupplierId" class="form-label">Supplier</label>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"  id="SupplierId" name="SupplierId" asp-for="Product.SupplierId">
+                    @foreach(var supplier in Model.Suppliers){
+                        <option value="@supplier.Id">@supplier.CompanyName</option>
+                    }
+                    
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="CategoryId" class="form-label">CategoryId</label>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"  id="CategoryId" name="CategoryId" asp-for="Product.CategoryId">
+                    @foreach(var category in Model.Categories){
+                        <option value="@category.Id">@category.CategoryName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-between">
+                <button class="btn btn-primary" type="submit" asp-page-handler="Edit">Submit</button>
+                <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+}else{
+<div class="container">
+    <p>Product Not Found!</p>
+</div>  
+}

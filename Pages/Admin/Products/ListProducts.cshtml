@@ -1,0 +1,61 @@
+﻿@page "{searchString?}"
+@model PARCIAL.Namespace.ListProductsModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Products List</h1>
+        <form>
+            <p>
+                Product: <input type="text" asp-for="ProductSearch" placeholder="Digite el nombre a buscar"/>
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
+        <form>
+            <p>
+                Supplier: <input type="text" asp-for="SupplierSearch" placeholder="Digite el Proveedor a buscar"/>
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
+        <form>
+            <p>
+                Category: <input type="text" asp-for="CategorySearch" placeholder="Digite el Proveedor a buscar"/>
+                <input type="submit" value="Filter" />
+            </p>
+        </form>
+    </div>
+</div>
+
+@if(Model.ProductsList != null && Model.ProductsList.Any()){
+<div class="container">
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Unit Price</th>
+                <th>Category</th>
+                <th>Supplier</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.ProductsList){
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.ProductName</td>
+                    <td>@product.UnitPrice</td>
+                    <td>@product.Category.CategoryName</td>
+                    <td>@product.Supplier.CompanyName</td>
+                    <td><a href="/admin/products/editproduct/@product.ProductId">View</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}else{
+    <div class="container">
+        <p>No Products were found!</p>
+    </div>
+}

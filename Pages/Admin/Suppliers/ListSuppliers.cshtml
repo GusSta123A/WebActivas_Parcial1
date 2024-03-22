@@ -1,0 +1,42 @@
+﻿@page
+@model PARCIAL.Namespace.ListSuppliersModel
+@{
+}
+
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Suppliers List</h1>
+    </div>
+</div>
+
+@if(Model.Suppliers != null && Model.Suppliers.Any()){
+<div class="container">
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Company Name</th>
+                <th>Contact Name</th>
+                <th>Contact Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var supplier in Model.Suppliers){
+                <tr>
+                    <td>@supplier.Id</td>
+                    <td>@supplier.CompanyName</td>
+                    <td>@supplier.ContactName</td>
+                    <td>@supplier.ContactTitle</td>
+                    <td><a href="/admin/suppliers/editsupplier/@supplier.Id">View</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}else{
+    <div class="container">
+        <p>No Suppliers were found!</p>
+    </div>
+}

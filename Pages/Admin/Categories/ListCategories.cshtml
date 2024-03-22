@@ -1,0 +1,40 @@
+﻿@page
+@model PARCIAL.Namespace.ListCategoriesModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Categories List</h1>
+    </div>
+</div>
+
+@if(Model.Categories != null && Model.Categories.Any()){
+<div class="container">
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category Name</th>
+                <th>Category Description</th>
+                <th>Picture URI</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.Categories){
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.CategoryName</td>
+                    <td>@category.CategoryDescription</td>
+                    <td>@category.PictureUrl</td>
+                    <td><a href="/admin/categories/editcategory/@category.Id">View</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}else{
+    <div class="container">
+        <p>No Categories were found!</p>
+    </div>
+}

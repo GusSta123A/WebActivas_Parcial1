@@ -1,0 +1,33 @@
+﻿@page
+@model PARCIAL.Namespace.AddCategoryModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Add Category</h1>
+    </div>
+</div>
+
+<div >
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="CategoryName" asp-for="AddCategoryRequest.CategoryName">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="CategoryDescription" asp-for="AddCategoryRequest.CategoryDescription">
+            </div>
+            <div class="mb-3">
+                <label for="pictureURI" class="form-label">Picture URI</label>
+                <input type="text" class="form-control" id="pictureURI" name="PictureUrl" asp-for="AddCategoryRequest.PictureUrl">
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

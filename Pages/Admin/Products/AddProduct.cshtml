@@ -1,0 +1,70 @@
+﻿@page
+@model PARCIAL.Namespace.AddProductModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Add Product</h1>
+    </div>
+</div>
+
+<div >
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                <label for="ProductName" class="form-label">ProductName</label>
+                <input type="text" class="form-control" id="name" name="ProductName" asp-for="AddProductRequest.ProductName">
+            </div>
+            <div class="mb-3">
+                <label for="QuantityPerUnit" class="form-label">QuantityPerUnit</label>
+                <input type="text" class="form-control" id="description" name="QuantityPerUnit" asp-for="AddProductRequest.QuantityPerUnit">
+            </div>
+            <div class="mb-3">
+                <label for="UnitPrice" class="form-label">UnitPrice</label>
+                <input type="text" class="form-control" id="pictureURI" name="UnitPrice" asp-for="AddProductRequest.UnitPrice">
+            </div>
+
+            <div class="mb-3">
+                <label for="UnitInStock" class="form-label">UnitInStock</label>
+                <input type="text" class="form-control" id="pictureURI" name="UnitInStock" asp-for="AddProductRequest.UnitInStock">
+            </div>
+            <div class="mb-3">
+                <label for="UnitsOnOrder" class="form-label">UnitsOnOrder</label>
+                <input type="text" class="form-control" id="pictureURI" name="UnitsOnOrder" asp-for="AddProductRequest.UnitsOnOrder">
+            </div>
+            <div class="mb-3">
+                <label for="ReorderLevel" class="form-label">ReorderLevel</label>
+                <input type="text" class="form-control" id="pictureURI" name="ReorderLevel" asp-for="AddProductRequest.ReorderLevel">
+            </div>
+            <div class="mb-3">
+                <label for="Discontinued" class="form-label">Discontinued</label>
+                <input type="text" class="form-control" id="pictureURI" name="Discontinued" asp-for="AddProductRequest.Discontinued">
+            </div>
+
+
+            <div class="mb-3">
+                <label for="SupplierId" class="form-label">Discontinued</label>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"  id="SupplierId" name="SupplierId" asp-for="AddProductRequest.SupplierId">
+                    <option selected>Open this select menu</option>
+                    @foreach(var supplier in Model.Suppliers){
+                        <option value="@supplier.Id">@supplier.CompanyName</option>
+                    }
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="CategoryId" class="form-label">CategoryId</label>
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example"  id="CategoryId" name="CategoryId" asp-for="AddProductRequest.CategoryId">
+                    <option selected>Open this select menu</option>
+                    @foreach(var category in Model.Categories){
+                        <option value="@category.Id">@category.CategoryName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
